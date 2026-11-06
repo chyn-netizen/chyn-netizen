@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="개발 경험을 바탕으로 시스템을 분석하고 문제를 해결하는 개발자 조호연의 포트폴리오">
+  <title>조호연 | Developer Portfolio</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --text: #20242c;
+      --muted: #687181;
+      --line: #e6e9ef;
+      --accent: #315efb;
+      --accent-soft: #edf1ff;
+      --max: 960px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "Noto Sans KR", sans-serif;
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(247, 248, 250, .92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    nav {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo { font-weight: 800; letter-spacing: -.04em; }
+    .nav-links { display: flex; gap: 22px; color: var(--muted); font-size: 14px; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .hero { padding: 104px 0 88px; }
+    .eyebrow {
+      display: inline-block;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    h1 {
+      max-width: 760px;
+      margin: 22px 0 18px;
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: 1.2;
+      letter-spacing: -.055em;
+    }
+    .hero p {
+      max-width: 680px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+    .button {
+      display: inline-block;
+      padding: 11px 17px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .button.primary { color: white; background: var(--accent); border-color: var(--accent); }
+
+    section { padding: 58px 0; }
+    .section-heading { margin-bottom: 25px; }
+    .section-heading h2 { margin: 0 0 5px; font-size: 27px; letter-spacing: -.04em; }
+    .section-heading p { margin: 0; color: var(--muted); font-size: 14px; }
+    .card {
+      padding: 25px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+    .about-text { margin: 0; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .stat {
+      padding: 18px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+    .stat strong { display: block; font-size: 23px; letter-spacing: -.04em; }
+    .stat span { color: var(--muted); font-size: 13px; }
+
+    .timeline { display: grid; gap: 14px; }
+    .role {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 8px;
+    }
+    .role strong { font-size: 17px; }
+    .period { color: var(--muted); font-size: 13px; white-space: nowrap; }
+    .card ul { margin: 10px 0 0; padding-left: 19px; color: var(--muted); }
+
+    .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .project h3 { margin: 0 0 7px; font-size: 17px; }
+    .project p { margin: 0; color: var(--muted); font-size: 14px; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+    .tag {
+      padding: 4px 9px;
+      border-radius: 7px;
+      background: #f0f2f6;
+      color: #515b6b;
+      font-size: 12px;
+    }
+
+    .skills { display: flex; flex-wrap: wrap; gap: 9px; }
+    .skill {
+      padding: 9px 13px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: var(--surface);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .skill.learning { color: var(--accent); background: var(--accent-soft); border-color: transparent; }
+
+    .closing {
+      padding: 30px;
+      border-radius: 16px;
+      background: #202a42;
+      color: white;
+    }
+    .closing p { margin: 8px 0 0; color: #d3d9e6; }
+    footer { padding: 30px 0 45px; color: var(--muted); font-size: 13px; }
+
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 28px, var(--max)); }
+      .nav-links { gap: 12px; font-size: 12px; }
+      .hero { padding: 76px 0 60px; }
+      .hero p { font-size: 16px; }
+      section { padding: 42px 0; }
+      .stats { grid-template-columns: 1fr; }
+      .projects { grid-template-columns: 1fr; }
+      .role { display: block; }
+      .period { display: block; margin-top: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap" aria-label="주요 메뉴">
+      <a class="logo" href="#top">HOYEON.DEV</a>
+      <div class="nav-links">
+        <a href="#about">소개</a>
+        <a href="#career">경력</a>
+        <a href="#projects">프로젝트</a>
+        <a href="#skills">기술</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow">Developer · AI Engineer in Progress</span>
+        <h1>문제의 원인을 끝까지 분석하고,<br>실행 가능한 해결책을 만듭니다.</h1>
+        <p>
+          안녕하세요, 개발자 조호연입니다. 다년간 금융권과 기업의 콜센터 녹취 시스템을
+          개발하고 운영하며 서비스 흐름을 이해하고, 복잡한 문제를 분석해 해결해 왔습니다.
+          현재는 데이터 분석과 AI 모델의 원리를 학습하며 기술의 영역을 넓히고 있습니다.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#projects">프로젝트 보기</a>
+          <a class="button" href="#career">경력 살펴보기</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-heading">
+          <h2>About Me</h2>
+          <p>구현을 넘어 시스템과 문제의 맥락을 이해합니다.</p>
+        </div>
+        <div class="card">
+          <p class="about-text">
+            저는 새로운 기술을 빠르게 적용하는 것보다, 기술이 어떤 원리로 동작하고
+            서비스 전체에서 어떤 역할을 하는지 깊이 이해하는 것을 중요하게 생각합니다.
+            녹취 시스템 구축·운영 과정에서 화면부터 서비스 로직, 데이터베이스까지
+            흐름을 연결해 분석해 왔습니다. 문제가 발생하면 임시 조치에 그치지 않고
+            관련 절차와 소스 흐름을 추적해 근본 원인을 찾고, 유지보수하기 쉬운 방향으로
+            개선하는 데 집중합니다.
+          </p>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>1년 이상의</strong><span>IT 개발 및 운영 경험</span></div>
+          <div class="stat"><strong>금융·기업</strong><span>다양한 고객사 시스템 구축</span></div>
+          <div class="stat"><strong>End-to-End</strong><span>화면 · 서버 · DB 흐름 분석</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="career">
+      <div class="wrap">
+        <div class="section-heading">
+          <h2>Career</h2>
+          <p>웹 개발부터 서비스 운영과 개선까지</p>
+        </div>
+        <div class="timeline">
+          <article class="card">
+            <div class="role">
+              <strong>IT 기업</strong>
+              <span class="period">수년간</span>
+            </div>
+            <ul>
+              <li>금융권 및 대기업 콜센터·IPT 녹취 시스템 구축과 유지보수</li>
+              <li>사용자 웹 화면, 서비스 로직, 데이터베이스 프로시저 개발</li>
+              <li>요구사항 분석부터 설계, 개발, 테스트 및 운영 이슈 대응</li>
+              <li>인증·권한·로그 관리와 성능 및 데이터 처리 개선</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-heading">
+          <h2>Selected Projects</h2>
+          <p>다양한 환경에서 수행한 주요 개발 및 개선 경험</p>
+        </div>
+        <div class="projects">
+          <article class="card project">
+            <h3>A증권사 콜센터 녹취 구축</h3>
+            <p>기존 녹취 솔루션을 대체하는 시스템 구축. AS-IS 분석, 웹 개발, SSO 로그인 및 외부 STT 연동 프로세스를 구현했습니다.</p>
+            <div class="tag-list"><span class="tag">Java</span><span class="tag">Web</span><span class="tag">SSO</span><span class="tag">STT 연동</span></div>
+          </article>
+          <article class="card project">
+            <h3>B은행권 DB 마이그레이션</h3>
+            <p>Oracle에서 PostgreSQL로 저장 프로시저를 전환하며 DB 환경 변화에 따른 로직과 SQL을 점검했습니다.</p>
+            <div class="tag-list"><span class="tag">Oracle</span><span class="tag">PostgreSQL</span><span class="tag">SQL</span></div>
+          </article>
+          <article class="card project">
+            <h3>C보험사 IPT·IPCC 고도화</h3>
+            <p>기존 녹취 시스템과 웹을 개선하고, 암·복호화 처리 성능 및 녹취 재생 호환성 문제를 해결했습니다.</p>
+            <div class="tag-list"><span class="tag">Java</span><span class="tag">JVM 튜닝</span><span class="tag">JavaScript</span></div>
+          </article>
+          <article class="card project">
+            <h3>D은행 녹취 이력 모니터링</h3>
+            <p>녹취 DB 이력 삭제 현황 모니터링 화면을 개발하고 입력값 검증, 인증 및 운영정보 접근 권한을 개선했습니다.</p>
+            <div class="tag-list"><span class="tag">SQL</span><span class="tag">보안</span><span class="tag">모니터링</span></div>
+          </article>
+          <article class="card project">
+            <h3>여러 콜센터 사용자 인터페이스 인증 개선</h3>
+            <p>로그인 및 인증 안정화, SSO, 사용자 동기화 절차 개선과 로그인 이력 누락 문제를 점검했습니다.</p>
+            <div class="tag-list"><span class="tag">인증</span><span class="tag">SSO</span><span class="tag">DB</span></div>
+          </article>
+          <article class="card project">
+            <h3>DB 처리 및 성능 개선</h3>
+            <p>조회·통계·실시간 청취 프로시저와 데이터 처리 흐름을 분석하고, DB 부하 및 임시 데이터 처리 구조를 개선했습니다.</p>
+            <div class="tag-list"><span class="tag">SQL</span><span class="tag">Stored Procedure</span><span class="tag">성능 개선</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-heading">
+          <h2>Tech & Learning</h2>
+          <p>실무 경험 기술과 현재 학습 중인 분야를 구분했습니다.</p>
+        </div>
+        <div class="card">
+          <h3>실무 경험</h3>
+          <div class="skills">
+            <span class="skill">Java</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">SQL</span>
+            <span class="skill">Oracle</span>
+            <span class="skill">PostgreSQL</span>
+            <span class="skill">MSSQL</span>
+            <span class="skill">MySQL</span>
+            <span class="skill">Git</span>
+          </div>
+          <h3 style="margin-top:25px;">현재 학습 중</h3>
+          <div class="skills">
+            <span class="skill learning">Python</span>
+            <span class="skill learning">NumPy</span>
+            <span class="skill learning">Pandas</span>
+            <span class="skill learning">통계·데이터 분석</span>
+            <span class="skill learning">머신러닝 기초</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="closing">
+          <h2 style="margin:0; letter-spacing:-.04em;">기술을 이해하고, 문제 해결로 연결하겠습니다.</h2>
+          <p>
+            기존 시스템 개발 경험에 데이터 분석과 AI 역량을 더해,
+            원리를 이해하고 실제 서비스 문제를 해결하는 엔지니어로 성장하고 있습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© 2026 조호연 · Developer Portfolio</div>
+  </footer>
+</body>
+</html>
